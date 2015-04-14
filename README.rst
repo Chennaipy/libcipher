@@ -42,3 +42,26 @@ You can build the documentation, using the following commands ::
   $ pip install -r doc-requirements.txt
   $ cd doc
   $ make html
+
+Contributing Guidelines
+-----------------------
+
+Before sending a pull request, please ensure the following:
+
+  * The code has been checked for `PEP8
+    <https://www.python.org/dev/peps/pep-0008/>`_ compliance using the
+    ``pep8`` tool.
+
+  * Unit test cases have been added for the new functionality, and the
+    line coverage is 100%.
+
+  * Docstrings have been added to public functions, that they adhere
+    to `Google Docstring Convention
+    <https://google-styleguide.googlecode.com/svn/trunk/pyguide.html>`_.
+
+  * The API manual has been updated, to display the documentation for
+    any new modules added.
+
+  * The changelog has been updated, to indicate the change made along
+    with the issue no. on GitHub. The changelog is to be in `releases
+    format <http://releases.readthedocs.org/en/latest/index.html>`_.
