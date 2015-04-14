@@ -8,6 +8,7 @@ Provides functions to encrypt / decrypt a message by reversing it.
 'abcd'
 """
 
+
 def encrypt(message):
     """Returns message encrypted using reverse cipher.
 
