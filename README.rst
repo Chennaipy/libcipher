@@ -1,6 +1,17 @@
 libcipher
 =========
 
+.. image:: https://travis-ci.org/Chennaipy/libcipher.svg?branch=master
+   :target: https://travis-ci.org/Chennaipy/libcipher
+
+.. image:: http://img.shields.io/codecov/c/github/Chennaipy/libcipher.svg?style=flat
+   :target: https://codecov.io/github/Chennaipy/libcipher?branch=master
+
+.. image:: https://readthedocs.org/projects/libcipher/badge/?version=latest
+   :target: https://readthedocs.org/projects/libcipher/?badge=latest
+   :alt: Documentation Status
+
+
 The goal of this project is to learn and implement the best practices,
 in writing and maintaining a Python package. For this purpose, we
 implement a Python package containing cipher functions from the book
