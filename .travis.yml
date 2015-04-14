@@ -8,9 +8,9 @@ python:
 
 install: 
   - pip install coverage
-  - pip install python-coveralls
+  - pip install codecov
 
 script: coverage run --source=libcipher setup.py test
 
 after_success: 
-  - coveralls
+  - codecov
