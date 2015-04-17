@@ -7,6 +7,7 @@ character position of plain text.
 'Common sense is not so common.'
 
 """
+from __future__ import division
 import math
 
 
