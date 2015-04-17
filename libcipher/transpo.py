@@ -32,7 +32,6 @@ def decrypt(key, message):
     numOfShadedBoxes = (numOfColumns * numOfRows) - len(message)
 
     plaintext = [''] * numOfColumns
-    print(numOfColumns)
 
     col = 0
     row = 0
