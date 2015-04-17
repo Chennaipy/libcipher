@@ -1,4 +1,3 @@
-
 class EnglishChecker():
     """This class serves the purpose of checking if a statement is English or not.
        Two filter methods accomplish this by ensuring:
@@ -10,7 +9,7 @@ class EnglishChecker():
         self.UPPERLETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         lower = self.UPPERLETTERS.lower()
         self.LETTERS_AND_SPACE = self.UPPERLETTERS + lower + ' \t\n'
-        f = open('/home/mer/dictionary.txt')
+        f = open('../dictionary.txt')
         self.englishWords = {}
         for word in f.read().split('\n'):
             self.englishWords[word] = None
