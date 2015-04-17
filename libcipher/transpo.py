@@ -27,7 +27,7 @@ def decrypt(key, message):
 
     """
 
-    numOfColumns = math.ceil(len(message) / key)
+    numOfColumns = int(math.ceil(len(message) / key))
     numOfRows = key
     numOfShadedBoxes = (numOfColumns * numOfRows) - len(message)
 
