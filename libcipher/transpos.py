@@ -51,6 +51,3 @@ def encrypt(keysize, message):
     except InvalidKeySizeException as err:
         print(err)
         return ''
-print(encrypt(5, 'Hello World'))
-print(encrypt(2, ''))
-print(encrypt(5, 'Hello'))
