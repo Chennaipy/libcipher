@@ -28,27 +28,28 @@ The package can be installed using the following command ::
 Development
 -----------
 
-After cloning the repository, create a new virtual environment
+After cloning the repository, create a new virtual environment ::
+   
+   $ virtualenv env
+   
+Next, activate this environment ::
 
-$ virtualenv env
+   $ source env/bin/activate
 
-Next, activate this environment
+You can now install the package in development mode using the following command ::
 
-$ source env/bin/activate
+  $ python3 setup.py develop
 
-You can now install the package in development mode using the following command
+You can execute the unit tests, using the following command ::
 
-$ python3 setup.py develop
+  $ python3 setup.py test
 
-You can execute the unit tests, using the following command
+You can build the documentation, using the following commands ::
 
-$ python3 setup.py test
+  $ pip install -r doc-requirements.txt
+  $ cd doc
+  $ make html
 
-You can build the documentation, using the following commands
-
-$ pip install -r doc-requirements.txt
-$ cd doc
-$ make html
 
 Contributing Guidelines
 -----------------------
