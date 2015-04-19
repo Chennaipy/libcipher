@@ -7,15 +7,14 @@ class EnglishChecker():
            the dictionary file, an exhaustive list of english words
     """
     
-    def __init__(self):
+    def __init__(self,filepath):
        
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
-        #f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
-        f = open('/home/travis/build/Chennaipy/libcipher/libcipher/dictionary.txt')
+        filename = open(filepath)
         self.english_words = {}
-        for word in f.read().split('\n'):
+        for word in filename:
             self.english_words[word] = None
-        f.close()
+        filename.close()
         self.ENGLISH_WORDS = self.english_words
 
     def get_english_count(self, message):
@@ -41,17 +40,15 @@ class EnglishChecker():
         """Checks to see if given text is in English and 
            returns the result.
         Args:
-        self (object): Default argument in methods of a class.
-            It represents an object of this class
-        message (string): The text input 
-        word_percentage (int): Indicates the minium 
-        percentage of English words in the message. The 
-        default value is 25
-        letter_percentage (int): Indicates the minium 
-        percentage of English alphabets in a word. The 
-        default value is 85 
+          message (string): The text input 
+          word_percentage (int): Indicates the minium 
+            percentage of English words in the message. The 
+            default value is 25
+          letter_percentage (int): Indicates the minium 
+            percentage of English alphabets in a word. The 
+            default value is 85 
         Returns:
-        bool: True if message is in English, False otherwise.
+          bool: True if message is in English, False otherwise.
                           
         """
         if len(message) == 0:
