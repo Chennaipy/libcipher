@@ -14,7 +14,7 @@ class EnglishChecker():
         #f = open('/home/travis/build/Chennaipy/libcipher/libcipher')
         self.english_words = {}
         for word in f.read().split('\n'):
-            self.english_words[word] = None
+            self.englishWords[word] = None
         f.close()
         self.ENGLISH_WORDS = self.english_words
 
