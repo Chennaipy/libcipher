@@ -35,7 +35,22 @@ class EnglishChecker():
         return ''.join(letters_only)
 
     def is_english(self, message, word_percentage=25, letter_percentage=85):
-        """Takes input, returns True for English input, else returns False"""
+        """Checks to see if given text is in English and 
+           returns the result.
+        Args:
+        self (object): Default argument in methods of a class.
+            It represents an object of this class
+        message (string): The text input 
+        word_percentage (int): Indicates the minium 
+        percentage of English words in the message. The 
+        default value is 25
+        letter_percentage (int): Indicates the minium 
+        percentage of English alphabets in a word. The 
+        default value is 85 
+        Returns:
+        bool: True if message is in English, False otherwise.
+                          
+        """
         if len(message) == 0:
             return False
         words_match = self.get_english_count(message) * 100 >= word_percentage
