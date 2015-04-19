@@ -76,13 +76,13 @@ def encrypt(message, key=None):
     cipher_text = ""
     msg = cipher_helper(message, key)
     for each_char in msg:
-        char_pos = string.lowercase.find(each_char)
+        char_pos = string.ascii_lowercase.find(each_char)
         if char_pos == -1:
             cipher_text += each_char
             continue
         else:
             char_pos = (char_pos + key) % 26
-            cipher_text += string.lowercase[char_pos]
+            cipher_text += string.ascii_lowercase[char_pos]
     return cipher_text
 
 
@@ -102,11 +102,11 @@ def decrypt(message, key):
     decrypt_text = ""
     msg = cipher_helper(message, key)
     for each_char in msg:
-        char_pos = string.lowercase.find(each_char)
+        char_pos = string.ascii_lowercase.find(each_char)
         if char_pos == -1:
             decrypt_text += each_char
             continue
         else:
             char_pos = (char_pos - key) % 26
-            decrypt_text += string.lowercase[char_pos]
+            decrypt_text += string.ascii_lowercase[char_pos]
     return decrypt_text
