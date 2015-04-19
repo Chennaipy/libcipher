@@ -11,7 +11,7 @@ class EnglishChecker():
        
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
         #f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
-        f = open('/home/travis/build/Chennaipy/libcipher/libcipher')
+        f = open('/home/travis/build/Chennaipy/libcipher/libcipher/dictionary.txt')
         self.english_words = {}
         for word in f.read().split('\n'):
             self.english_words[word] = None
