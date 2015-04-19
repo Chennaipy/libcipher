@@ -6,12 +6,10 @@ from libcipher.caesar import encrypt, decrypt, NoKeyGiven, WrongKey
 
 class CaesarTestCase(unittest.TestCase):
     def test_encrypt_no_key(self):
-        with self.assertRaises(NoKeyGiven):
-            encrypt("hello")
+        self.assertRaises(NoKeyGiven, encrypt, "hello")
 
     def test_encrypt_invalid_key(self):
-        with self.assertRaises(WrongKey):
-            encrypt("hello", 35)
+        self.assertRaises(WrongKey, encrypt, "hello", 35)
 
     def test_encrypt_with_key(self):
         encrypted = encrypt("Hello World", 2)

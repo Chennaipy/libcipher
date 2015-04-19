@@ -1,12 +1,15 @@
 __author__ = 'kskrishnasangeeth'
 
+import string
+
 
 class Error(Exception):
     pass
 
 
 class WrongKey(Error):
-    """ class created for throwing Exception in the event of wrong key being supplied
+    """ class created for throwing Exception in the
+        event of wrong key being supplied.
 
     Attributes:
         msg (str): Explanation on why key is not allowed.
@@ -23,7 +26,8 @@ class WrongKey(Error):
 
 
 class NoKeyGiven(Error):
-    """ class created for throwing Exception in the event of no key being supplied
+    """ class created for throwing Exception in the
+        event of no key being supplied.
 
     Attributes:
         msg (str): Message to provide key for encryption.
@@ -66,43 +70,43 @@ def encrypt(message, key=None):
         key (int): The key based on which encryption is performed.
 
     Returns:
-        cipher_text (str): the encrypted message.
+        str: the encrypted message.
 
     """
     cipher_text = ""
     msg = cipher_helper(message, key)
     for each_char in msg:
-        if each_char == ' ' or not each_char.isalpha():
+        char_pos = string.lowercase.find(each_char)
+        if char_pos == -1:
             cipher_text += each_char
             continue
         else:
-            changed_char = chr(ord(each_char) + key)
-            if ord(changed_char) > ord('z'):
-                changed_char = chr(ord(each_char) + (key - 26))
-            cipher_text += changed_char
+            char_pos = (char_pos + key) % 26
+            cipher_text += string.lowercase[char_pos]
     return cipher_text
 
 
 def decrypt(message, key):
-    """Returns the actual message which was encrypted with caesar cipher using Key.
+    """Returns the actual message which was encrypted
+       with caesar cipher using Key.
 
     Args:
         message (str): The message to be decrypted.
-        key (int): The key based on which decryption is performed.
+        key (int): The key based on which decryption
+                   is performed.
 
     Returns:
-        decrypt_text (str): The message which was decrypted.
+        str:  The message which was decrypted.
 
     """
     decrypt_text = ""
     msg = cipher_helper(message, key)
     for each_char in msg:
-        if each_char == ' ' or not each_char.isalpha():
+        char_pos = string.lowercase.find(each_char)
+        if char_pos == -1:
             decrypt_text += each_char
             continue
         else:
-            changed_char = chr(ord(each_char) - key)
-            if ord(changed_char) < ord('a'):
-                changed_char = chr(ord(each_char) + (26 - key))
-            decrypt_text += changed_char
+            char_pos = (char_pos - key) % 26
+            decrypt_text += string.lowercase[char_pos]
     return decrypt_text
