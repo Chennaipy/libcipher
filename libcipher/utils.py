@@ -10,8 +10,8 @@ class EnglishChecker():
     def __init__(self):
        
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
-        #f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
-        f = open('/home/travis/build/Chennaipy/libcipher/libcipher')
+        f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
+        #f = open('/home/travis/build/Chennaipy/libcipher/libcipher')
         self.english_words = {}
         for word in f.read().split('\n'):
             self.englishWords[word] = None
