@@ -3,7 +3,7 @@ import unittest
 import libcipher.utils as utils
 
 
-class EnglishChecktestCase(unittest.TestCase):
+class english_check_testcase(unittest.TestCase):
     def test_for_english(self):
         x = utils.EnglishChecker()
         self.assertTrue(x.is_english("Mary had a little lamb"))
