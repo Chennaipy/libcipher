@@ -9,37 +9,37 @@ class EnglishChecker():
     def __init__(self):
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
         f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
-        self.englishWords = {}
+        self.english_words = {}
         for word in f.read().split('\n'):
-            self.englishWords[word] = None
+            self.english_words[word] = None
         f.close()
-        self.ENGLISH_WORDS = self.englishWords
+        self.ENGLISH_WORDS = self.english_words
 
-    def getEnglishCount(self, message):
+    def get_english_count(self, message):
         message = message.upper()
-        message = self.removeNonLetters(message)
-        possibleWords = message.split()
-        if possibleWords == []:
+        message = self.remove_non_letters(message)
+        possible_words = message.split()
+        if possible_words == []:
             return 0.0  # no words at all, so return 0.0
         matches = 0
-        for word in possibleWords:
+        for word in possible_words:
             if word in self.ENGLISH_WORDS:
                 matches += 1
-        return float(matches) / len(possibleWords)
+        return float(matches) / len(possible_words)
 
-    def removeNonLetters(self, message):
-        lettersOnly = []
+    def remove_non_letters(self, message):
+        letters_only = []
         for symbol in message:
             if symbol in self.LETTERS_AND_SPACE:
-                lettersOnly.append(symbol)
-        return ''.join(lettersOnly)
+                letters_only.append(symbol)
+        return ''.join(letters_only)
 
-    def is_english(self, message, wordPercentage=25, letterPercentage=85):
+    def is_english(self, message, word_percentage=25, letter_percentage=85):
         """Takes input, returns True for English input, else returns False"""
         if len(message) == 0:
             return False
-        wordsMatch = self.getEnglishCount(message) * 100 >= wordPercentage
-        numLetters = len(self.removeNonLetters(message))
-        messageLettersPercentage = float(numLetters) / len(message) * 100
-        lettersMatch = messageLettersPercentage >= letterPercentage
-        return wordsMatch and lettersMatch
+        words_match = self.get_english_count(message) * 100 >= word_percentage
+        num_letters = len(self.remove_non_letters(message))
+        message_letters_percentage = float(num_letters) / len(message) * 100
+        letters_match = message_letters_percentage >= letter_percentage
+        return words_match and letters_match
