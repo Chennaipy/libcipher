@@ -9,7 +9,7 @@ class EnglishChecker():
         self.UPPERLETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         lower = self.UPPERLETTERS.lower()
         self.LETTERS_AND_SPACE = self.UPPERLETTERS + lower + ' \t\n'
-        f = open('dictionary.txt')
+        f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
         self.englishWords = {}
         for word in f.read().split('\n'):
             self.englishWords[word] = None
