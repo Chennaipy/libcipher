@@ -58,6 +58,6 @@ class EnglishChecker():
             return False
         words_match = self.get_english_count(message) * 100 >= word_percentage
         num_letters = len(self.remove_non_letters(message))
-        message_letters_percentage = float(numLetters) / len(message) * 100
-        lettersMatch = messageLettersPercentage >= letterPercentage
-        return wordsMatch and lettersMatch 
+        message_letters_percentage = float(num_letters) / len(message) * 100
+        letters_match = message_letters_percentage >= letter_percentage
+        return words_match and letters_match 
