@@ -30,7 +30,7 @@ class EnglishChecker():
                 matches += 1
         return float(matches) / len(possible_words)
 
-    def remove_non__letters(self, message):
+    def remove_non_letters(self, message):
         letters_only = []
         for symbol in message:
             if symbol in self.LETTERS_AND_SPACE:
