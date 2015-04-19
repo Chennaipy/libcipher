@@ -1,3 +1,4 @@
+import string
 class EnglishChecker():
     """This class serves the purpose of checking if a statement is English or not.
        Two filter methods accomplish this by ensuring:
@@ -6,9 +7,7 @@ class EnglishChecker():
            the dictionary file, an exhaustive list of english words
     """
     def __init__(self):
-        self.UPPERLETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        lower = self.UPPERLETTERS.lower()
-        self.LETTERS_AND_SPACE = self.UPPERLETTERS + lower + ' \t\n'
+        self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
         f = open('/home/travis/build/Anupama-Github/libcipher/libcipher/dictionary.txt')
         self.englishWords = {}
         for word in f.read().split('\n'):
