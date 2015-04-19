@@ -1,7 +1,7 @@
 Changelog
 =========
 
-* :feature:`1` Added utils module
+* :feature:`2` Added utils module
 * :support:`8` Add contributing guidelines.
 * :support:`3` Add Travis build status, code coverage, and Read The
   Docs badges.
