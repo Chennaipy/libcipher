@@ -2,7 +2,7 @@
 import unittest
 import libcipher.utils as utils
 
-filepath = '/home/travis/build/Chennaipy/libcipher/tests'
+filepath = '/home/travis/build/Chennaipy/libcipher/libcipher/dictionary.txt'
 
 class english_check_testcase(unittest.TestCase):
     
