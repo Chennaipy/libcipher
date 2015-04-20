@@ -9,15 +9,18 @@ class EnglishChecker():
     
     def __init__(self,filepath):
        
-        self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
+        self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace 
         filename = open(filepath)
         self.english_words = {}
         for word in filename:
+            word = word.rstrip('\n')
             self.english_words[word] = None
         filename.close()
         self.ENGLISH_WORDS = self.english_words
+        
 
     def get_english_count(self, message):
+        #print (self.english_words)
         message = message.upper()
         message = self.remove_non_letters(message)
         possible_words = message.split()
@@ -57,4 +60,4 @@ class EnglishChecker():
         num_letters = len(self.remove_non_letters(message))
         message_letters_percentage = float(num_letters) / len(message) * 100
         letters_match = message_letters_percentage >= letter_percentage
-        return words_match and letters_match 
+        return words_match and letters_match
