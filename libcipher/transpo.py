@@ -3,7 +3,7 @@
 Provides functions to encrypt / decrypt a message by changing the
 character position of plain text.
 
->> decrypt(8, 'Cenoonommstmme oo snnio. s s c')
+>>> decrypt(8, 'Cenoonommstmme oo snnio. s s c')
 'Common sense is not so common.'
 
 """
@@ -12,7 +12,7 @@ import math
 
 
 def decrypt(key, message):
-    """Return decrypted message using Transposition Cipher
+    """Returns message decrypted using Transposition Cipher
 
     The Transposition decrypt function will simulate the columns and
     rows of the grid that the plain text is written on by using a list of
@@ -24,15 +24,14 @@ def decrypt(key, message):
          message (str): Encrypted message
 
     Returns:
-        Decrypted message as string.
-
+         message (str): Decrypted message.
     """
 
-    numOfColumns = int(math.ceil(len(message) / key))
-    numOfRows = key
-    numOfShadedBoxes = (numOfColumns * numOfRows) - len(message)
+    num_of_columns = int(math.ceil(len(message) / key))
+    num_of_rows = key
+    num_of_shaded_boxes = (num_of_columns * num_of_rows) - len(message)
 
-    plaintext = [''] * numOfColumns
+    plaintext = [''] * num_of_columns
 
     col = 0
     row = 0
@@ -41,8 +40,9 @@ def decrypt(key, message):
         plaintext[col] += symbol
         col += 1
 
-        if (col == numOfColumns) or \
-        (col == numOfColumns - 1 and row >= numOfRows - numOfShadedBoxes):
+        if (col == num_of_columns) or ((
+                col == num_of_columns - 1 and
+                row >= num_of_rows - num_of_shaded_boxes)):
             col = 0
             row += 1
 
