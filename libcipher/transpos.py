@@ -5,15 +5,41 @@ Encryption needs a key(a number).
 """
 
 
-class InvalidKeySizeException(Exception):
+class Error(Exception):
+    pass
+
+
+class InvalidKeySizeException(Error):
+    '''Class created for throwing excption when invalid key size is given.
+
+    Attributes:
+        keysize (int): Size of Key
+        messagesize(int): Size of message
+
+    Args:
+        keysize (int): Size of Key
+        messagesize(int): Size of message
+    '''
+
     def __init__(self, keysize, messagesize):
         self.keysize = keysize
         self.messagesize = messagesize
 
     def __str__(self):
-        return("Cipher key is limited to half the length of the message" + 
-        " size.\nKey Size is " + repr(self.keysize) + 
-        " and Message Size is " + repr(self.messagesize))
+        return(
+            "Cipher key is limited to half the length of the message" +
+            " size.\nKey Size is " + repr(self.keysize) +
+            " and Message Size is " + repr(self.messagesize))
+
+
+class NoKeyGivenException(Error):
+    '''Class created for throwing exception when no key is given.
+    '''
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        return('Key is needed for encryption')
 
 
 def encrypt(keysize, message):
@@ -28,7 +54,9 @@ def encrypt(keysize, message):
     message_size = len(message)
     # the transposition cipher’s key is limited to half the length of the
     # message it is used to encrypt
-    try:
+    if keysize is None:
+        raise NoKeyGivenException
+    else:
         if keysize <= message_size//2:
             encrypted_message = keysize * ['']
             letter_index = 0
@@ -48,6 +76,4 @@ def encrypt(keysize, message):
                 # Raise an exception indicating invalid KeySize for
                 # non-empty message
                 raise InvalidKeySizeException(keysize, message_size)
-    except InvalidKeySizeException as err:
-        print(err)
-        return ''
+                return ''

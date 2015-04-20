@@ -1,8 +1,9 @@
-"""Unit tests for reverse cipher module."""
+"""Unit tests for tranpos cipher module-encrypt function"""
 
 import unittest
 from libcipher.transpos import encrypt
 from libcipher.transpos import InvalidKeySizeException
+from libcipher.transpos import NoKeyGivenException
 
 
 class TransposEncryptTestCase(unittest.TestCase):
@@ -15,7 +16,10 @@ class TransposEncryptTestCase(unittest.TestCase):
         self.assertEqual(encrypted, "|")
 
     def test_keysizeGreaterThanHalfMessageSize(self):
-        with self.assertRaises(InvalidKeySizeException):
-            encrypt(7, 'Hello')
+        self.assertRaises(InvalidKeySizeException, encrypt, 7, 'Hello World')
+
+    def test_NoKeyGiven(self):
+        self.assertRaises(NoKeyGivenException, encrypt, None, 'Hello World')
+
 if __name__ == '__main__':
     unittest.main()
