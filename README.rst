@@ -28,8 +28,15 @@ The package can be installed using the following command ::
 Development
 -----------
 
-After cloning the repository, install the package in development mode
-using the following command ::
+After cloning the repository, create a new virtual environment ::
+   
+   $ virtualenv env
+   
+Next, activate this environment ::
+
+   $ source env/bin/activate
+
+You can now install the package in development mode using the following command ::
 
   $ python3 setup.py develop
 
