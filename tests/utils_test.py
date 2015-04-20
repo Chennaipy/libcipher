@@ -2,9 +2,10 @@
 import unittest
 import libcipher.utils as utils
 
+filepath = '/home/travis/build/Chennaipy/libcipher/tests'
 
 class english_check_testcase(unittest.TestCase):
-    filepath = '/home/travis/build/Chennaipy/libcipher/tests'
+    
     def test_for_english(self):
         x = utils.EnglishChecker(filepath)
         self.assertTrue(x.is_english("Mary had a little lamb"))
