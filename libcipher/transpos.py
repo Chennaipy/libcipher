@@ -42,6 +42,16 @@ class NoKeyGivenException(Error):
         return('Key is needed for encryption')
 
 
+class NoMessageGivenException(Error):
+    '''Class created for throwing exception no message is given
+    '''
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        return('Message is needed for encryption')
+
+
 def encrypt(keysize, message):
     '''
     Args :
@@ -51,8 +61,11 @@ def encrypt(keysize, message):
         indicate end of message.For invalid key size,InvalidKeySizeException
         is thrown.For empty input message,'|' is returned.
     '''
-    message_size = len(message)
-    # the transposition cipher’s key is limited to half the length of the
+    if message is None:
+        raise NoMessageGivenException
+    else:
+        message_size = len(message)
+    # the transposition cipher key is limited to half the length of the
     # message it is used to encrypt
     if keysize is None:
         raise NoKeyGivenException

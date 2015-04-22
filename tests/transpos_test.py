@@ -4,6 +4,7 @@ import unittest
 from libcipher.transpos import encrypt
 from libcipher.transpos import InvalidKeySizeException
 from libcipher.transpos import NoKeyGivenException
+from libcipher.transpos import NoMessageGivenException
 
 
 class TransposEncryptTestCase(unittest.TestCase):
@@ -20,6 +21,9 @@ class TransposEncryptTestCase(unittest.TestCase):
 
     def test_NoKeyGiven(self):
         self.assertRaises(NoKeyGivenException, encrypt, None, 'Hello World')
+
+    def test_NoMessageGiven(self):
+        self.assertRaises(NoMessageGivenException, encrypt, 3, None)
 
 if __name__ == '__main__':
     unittest.main()
