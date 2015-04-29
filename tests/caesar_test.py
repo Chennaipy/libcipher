@@ -1,15 +1,13 @@
 """Unit tests for caesar cipher module. """
 
 import unittest
-from libcipher.caesar import encrypt, decrypt, NoKeyGiven, WrongKey
+from libcipher.caesar import encrypt, decrypt
 
 
 class CaesarTestCase(unittest.TestCase):
-    def test_encrypt_no_key(self):
-        self.assertRaises(NoKeyGiven, encrypt, "hello")
 
     def test_encrypt_invalid_key(self):
-        self.assertRaises(WrongKey, encrypt, "hello", 35)
+        self.assertRaises(ValueError, encrypt, "hello", 35)
 
     def test_encrypt_with_key(self):
         encrypted = encrypt("Hello World", 2)

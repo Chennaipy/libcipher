@@ -3,45 +3,8 @@ __author__ = 'kskrishnasangeeth'
 import string
 
 
-class Error(Exception):
-    pass
-
-
-class WrongKey(Error):
-    """ class created for throwing Exception in the
-        event of wrong key being supplied.
-
-    Attributes:
-        msg (str): Explanation on why key is not allowed.
-        key (int): Key that is supplied.
-
-    Args:
-        msg (str): Explanation on why key is not allowed.
-        key (int): Key that is supplied.
-
-   """
-    def __init__(self, msg, key):
-        self.msg = msg
-        self.key = key
-
-
-class NoKeyGiven(Error):
-    """ class created for throwing Exception in the
-        event of no key being supplied.
-
-    Attributes:
-        msg (str): Message to provide key for encryption.
-
-    Args:
-        msg (str): Message to provide key for encryption.
-
-    """
-    def __init__(self, msg):
-        self.msg = msg
-
-
 def cipher_helper(message, key):
-    """Function for modularising and removing some of the repeated code.
+    """Function where the encryption/decryption logic gets executed.
 
     Args:
         message (str): Message that is supplied for encryption/decryption.
@@ -51,16 +14,20 @@ def cipher_helper(message, key):
         message (str): Message in lowercase.
 
     """
-    if key is None:
-        raise NoKeyGiven("Key is needed for Encryption.")
 
-    if key <= 0 or key >= 27:
-        raise WrongKey("Key Value should be between 0 and 26. Got Key as", key)
+    cipher_text = ""
+    for each_char in message.lower():
+        char_pos = string.ascii_lowercase.find(each_char)
+        if char_pos == -1:
+            cipher_text += each_char
+            continue
+        else:
+            char_pos = (char_pos + key) % 26
+            cipher_text += string.ascii_lowercase[char_pos]
+    return cipher_text
 
-    return message.lower()
 
-
-def encrypt(message, key=None):
+def encrypt(message, key):
     """Returns the encrypted message for the string passed as argument.
 
     Uses a random key for generating the cipher text
@@ -73,17 +40,9 @@ def encrypt(message, key=None):
         str: the encrypted message.
 
     """
-    cipher_text = ""
-    msg = cipher_helper(message, key)
-    for each_char in msg:
-        char_pos = string.ascii_lowercase.find(each_char)
-        if char_pos == -1:
-            cipher_text += each_char
-            continue
-        else:
-            char_pos = (char_pos + key) % 26
-            cipher_text += string.ascii_lowercase[char_pos]
-    return cipher_text
+    check_exceptions(key)
+    encrypt_text = cipher_helper(message, key)
+    return encrypt_text
 
 
 def decrypt(message, key):
@@ -91,7 +50,7 @@ def decrypt(message, key):
        with caesar cipher using Key.
 
     Args:
-        message (str): The message to be decrypted.
+        message (str): The  message to be decrypted.
         key (int): The key based on which decryption
                    is performed.
 
@@ -99,14 +58,19 @@ def decrypt(message, key):
         str:  The message which was decrypted.
 
     """
-    decrypt_text = ""
-    msg = cipher_helper(message, key)
-    for each_char in msg:
-        char_pos = string.ascii_lowercase.find(each_char)
-        if char_pos == -1:
-            decrypt_text += each_char
-            continue
-        else:
-            char_pos = (char_pos - key) % 26
-            decrypt_text += string.ascii_lowercase[char_pos]
+    check_exceptions(key)
+    decrypt_text = cipher_helper(message, -key)
     return decrypt_text
+
+
+def check_exceptions(key):
+    """Function to check and raise exception for
+       wrong key.
+
+    Args:
+        key (str): The key for which exceptions are checked
+                    against.
+
+    """
+    if key <= 0 or key >= 27:
+        raise ValueError("Key value should be between 0 and 26. Got Key as", key)
