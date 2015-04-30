@@ -3,7 +3,7 @@ __author__ = 'kskrishnasangeeth'
 import string
 
 
-def cipher_helper(message, key):
+def __cipher_helper(message, key):
     """Function where the encryption/decryption logic gets executed.
 
     Args:
@@ -11,7 +11,7 @@ def cipher_helper(message, key):
         key (int): Key used for encryption/decryption.
 
     Returns:
-        message (str): Message in lowercase.
+        message (str): Ciphered Message in lowercase.
 
     """
 
@@ -40,8 +40,8 @@ def encrypt(message, key):
         str: the encrypted message.
 
     """
-    check_exceptions(key)
-    encrypt_text = cipher_helper(message, key)
+    __check_exceptions(key)
+    encrypt_text = __cipher_helper(message, key)
     return encrypt_text
 
 
@@ -58,12 +58,12 @@ def decrypt(message, key):
         str:  The message which was decrypted.
 
     """
-    check_exceptions(key)
-    decrypt_text = cipher_helper(message, -key)
+    __check_exceptions(key)
+    decrypt_text = __cipher_helper(message, -key)
     return decrypt_text
 
 
-def check_exceptions(key):
+def __check_exceptions(key):
     """Function to check and raise exception for
        wrong key.
 
@@ -73,4 +73,4 @@ def check_exceptions(key):
 
     """
     if key <= 0 or key >= 27:
-        raise ValueError("Key value should be between 0 and 26. Got Key as", key)
+        raise ValueError("Key  should be between 0 and 26. Got Key as", key)
