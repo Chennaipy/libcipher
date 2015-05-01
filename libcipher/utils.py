@@ -1,4 +1,9 @@
+import io,os
+import inspect,os
 import string
+dictionary_file_path = os.path.dirname(__file__)
+fileobject = open(dictionary_file_path+'/dictionary.txt')
+
 class EnglishChecker():
     """This class serves the purpose of checking if a statement is English or not.
        Two filter methods accomplish this by ensuring:
@@ -7,20 +12,22 @@ class EnglishChecker():
            the dictionary file, an exhaustive list of english words
     """
     
-    def __init__(self,filepath):
-       
-        self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace 
-        filename = open(filepath)
-        self.english_words = {}
-        for word in filename:
+    def __init__(self,filename = fileobject ):
+        self.filename = filename
+        self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
+        if type(self.filename) == file:
+           self.filename = open(dictionary_file_path+'/dictionary.txt')
+           content =  io.StringIO(unicode(self.filename.read())).getvalue()
+           self.english_words = {}
+           for word in content:
             word = word.rstrip('\n')
             self.english_words[word] = None
-        filename.close()
-        self.ENGLISH_WORDS = self.english_words
+            self.ENGLISH_WORDS = self.english_words
+        else:
+            content =  filename.getvalue()
+            self.ENGLISH_WORDS = content.upper()
         
-
     def get_english_count(self, message):
-        #print (self.english_words)
         message = message.upper()
         message = self.remove_non_letters(message)
         possible_words = message.split()
@@ -30,6 +37,7 @@ class EnglishChecker():
         for word in possible_words:
             if word in self.ENGLISH_WORDS:
                 matches += 1
+            
         return float(matches) / len(possible_words)
 
     def remove_non_letters(self, message):
@@ -60,4 +68,5 @@ class EnglishChecker():
         num_letters = len(self.remove_non_letters(message))
         message_letters_percentage = float(num_letters) / len(message) * 100
         letters_match = message_letters_percentage >= letter_percentage
+        self.filename.close()
         return words_match and letters_match
