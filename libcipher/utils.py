@@ -2,6 +2,7 @@ import io
 import os
 import inspect
 import string
+import sys
 dictionary_file_path = os.path.dirname(__file__)
 fileobject = open(dictionary_file_path+'/dictionary.txt')
 
@@ -23,7 +24,11 @@ class EnglishChecker():
 
         else:
             self.filename = open(dictionary_file_path+'/dictionary.txt')
-            content = io.StringIO(str(self.filename.read())).getvalue()
+            if sys.version < '3':
+                content = io.StringIO(unicode(self.filename.read())).getvalue()
+            else:
+                content = io.StringIO(str(self.filename.read())).getvalue()
+            
             self.english_words = {}
             for word in content:
                 word = word.rstrip('\n')
