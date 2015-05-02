@@ -1,8 +1,10 @@
-import io,os
-import inspect,os
+import io
+import os
+import inspect
 import string
 dictionary_file_path = os.path.dirname(__file__)
 fileobject = open(dictionary_file_path+'/dictionary.txt')
+
 
 class EnglishChecker():
     """This class serves the purpose of checking if a statement is English or not.
@@ -11,22 +13,23 @@ class EnglishChecker():
         2. At least 25% of the words in the sentence are contained in
            the dictionary file, an exhaustive list of english words
     """
-    
-    def __init__(self,filename = fileobject ):
+
+    def __init__(self, filename=fileobject):
         self.filename = filename
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
-        if type(self.filename) == file:
-           self.filename = open(dictionary_file_path+'/dictionary.txt')
-           content =  io.StringIO(unicode(self.filename.read())).getvalue()
-           self.english_words = {}
-           for word in content:
-            word = word.rstrip('\n')
-            self.english_words[word] = None
-            self.ENGLISH_WORDS = self.english_words
-        else:
-            content =  filename.getvalue()
+        if type(self.filename) == io.StringIO:
+            content = filename.getvalue()
             self.ENGLISH_WORDS = content.upper()
-        
+
+        else:
+            self.filename = open(dictionary_file_path+'/dictionary.txt')
+            content = io.StringIO(str(self.filename.read())).getvalue()
+            self.english_words = {}
+            for word in content:
+                word = word.rstrip('\n')
+                self.english_words[word] = None
+            self.ENGLISH_WORDS = self.english_words
+
     def get_english_count(self, message):
         message = message.upper()
         message = self.remove_non_letters(message)
@@ -37,7 +40,7 @@ class EnglishChecker():
         for word in possible_words:
             if word in self.ENGLISH_WORDS:
                 matches += 1
-            
+
         return float(matches) / len(possible_words)
 
     def remove_non_letters(self, message):
@@ -48,19 +51,19 @@ class EnglishChecker():
         return ''.join(letters_only)
 
     def is_english(self, message, word_percentage=25, letter_percentage=85):
-        """Checks to see if given text is in English and 
+        """Checks to see if given text is in English and
            returns the result.
         Args:
-          message (string): The text input 
-          word_percentage (int): Indicates the minium 
-            percentage of English words in the message. The 
+          message (string): The text input
+          word_percentage (int): Indicates the minium
+            percentage of English words in the message. The
             default value is 25
-          letter_percentage (int): Indicates the minium 
-            percentage of English alphabets in a word. The 
-            default value is 85 
+          letter_percentage (int): Indicates the minium
+            percentage of English alphabets in a word. The
+            default value is 85
         Returns:
           bool: True if message is in English, False otherwise.
-                          
+
         """
         if len(message) == 0:
             return False
