@@ -1,8 +1,9 @@
 import io
 import os
 import inspect
-import string
 import six
+import string
+
 dictionary_file_path = os.path.dirname(__file__)
 fileobject = open(dictionary_file_path+'/dictionary.txt')
 
