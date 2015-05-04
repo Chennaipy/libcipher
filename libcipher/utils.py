@@ -1,7 +1,7 @@
 import io
 import os
 import inspect
-import six
+import sys
 import string
 
 dictionary_file_path = os.path.dirname(__file__)
@@ -25,10 +25,10 @@ class EnglishChecker():
 
         else:
             self.filename = open(dictionary_file_path+'/dictionary.txt')
-            if six.PY2:
-                content = six.StringIO(unicode(self.filename.read())).getvalue()
+            if sys.version < '3' :
+                content = io.StringIO(unicode(self.filename.read())).getvalue()
             else:
-                content = six.StringIO(str(self.filename.read())).getvalue()
+                content = io.StringIO(str(self.filename.read())).getvalue()
             
             self.english_words = {}
             for word in content:
