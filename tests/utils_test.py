@@ -13,7 +13,7 @@ def get_marys_dictionary():
         english_words = ["had", "a", "little", "lamb"]
         text = str("\n".join(english_words))
         if sys.version < '3':
-            dict_file = io.StringIO(u"\n".join(english_words))
+            dict_file = io.StringIO(unicode('\n').join(english_words))
         else:
             dict_file = io.StringIO("\n".join(english_words))
         return dict_file
