@@ -4,7 +4,6 @@ import inspect
 import io
 import os
 import six
-import sys
 import unittest
 
 filepath = os.path.dirname(os.path.abspath(inspect.getfile(utils)))
