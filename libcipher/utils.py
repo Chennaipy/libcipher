@@ -31,11 +31,8 @@ class EnglishChecker():
                 content = io.StringIO(str(self.filename.read())).getvalue()
             
             self.english_words = {}
-            for word in content:
-                word = word.rstrip('\n')
-                self.english_words[word] = None
-            self.ENGLISH_WORDS = self.english_words
-
+            self.ENGLISH_WORDS = content.split('\n')
+            
     def get_english_count(self, message):
         message = message.upper()
         message = self.remove_non_letters(message)
@@ -46,7 +43,6 @@ class EnglishChecker():
         for word in possible_words:
             if word in self.ENGLISH_WORDS:
                 matches += 1
-
         return float(matches) / len(possible_words)
 
     def remove_non_letters(self, message):
