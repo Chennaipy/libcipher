@@ -3,6 +3,7 @@ from libcipher import utils as utils
 import inspect
 import io
 import os
+import six
 import sys
 import unittest
 
@@ -12,7 +13,7 @@ filepath = os.path.dirname(os.path.abspath(inspect.getfile(utils)))
 def get_marys_dictionary():
         english_words = ["had", "a", "little", "lamb"]
         text = str("\n".join(english_words))
-        if sys.version < '3':
+        if six.PY3:
             dict_file = io.StringIO(u"""\n""".join(english_words))
         else:
             dict_file = io.StringIO("""\n""".join(english_words))
