@@ -10,7 +10,7 @@ def get_marys_dictionary():
         if sys.version < '3':
             dict_file = io.StringIO(unicode('\n').join(english_words))
         else:
-            dict_file = io.StringIO(u"\n".join(english_words))
+            dict_file = io.StringIO(u"""\n""".join(english_words))
         return dict_file
 
 
