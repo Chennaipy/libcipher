@@ -7,15 +7,15 @@ import unittest
 
 def get_marys_dictionary():
         english_words = ["had", "a", "little", "lamb"]
-        text = str("\n".join(english_words))
-        if sys.version < '3':
-            dict_file = io.StringIO(unicode('\n').join(english_words))
-        else:
-            dict_file = io.StringIO("\n".join(english_words))
+        #text = str("\n".join(english_words))
+        #if sys.version < '3':
+         #   dict_file = io.StringIO(unicode('\n').join(english_words))
+ #       else:
+        dict_file = io.StringIO(u"\n".join(english_words))
         return dict_file
 
 
-class english_check_testcase(unittest.TestCase):
+class EnglishCheckTestCase(unittest.TestCase):
 
         def test_for_english(self):
             dict_file = get_marys_dictionary()
