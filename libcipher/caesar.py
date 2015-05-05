@@ -1,3 +1,6 @@
+"""This module provides the functionality of Caesar Cipher
+encryption and decryption for the Libcipher project."""
+
 __author__ = 'kskrishnasangeeth'
 
 import string
@@ -28,9 +31,10 @@ def __cipher_helper(message, key):
 
 
 def encrypt(message, key):
-    """Returns the encrypted message for the string passed as argument.
+    """Returns the encrypted message.
 
-    Uses a random key for generating the cipher text
+    The message string that is  passed as argument gets
+    encrypted using the key that is supplied.
 
     Args:
         message (str): The message to be encrypted.
@@ -46,8 +50,10 @@ def encrypt(message, key):
 
 
 def decrypt(message, key):
-    """Returns the actual message which was encrypted
-       with caesar cipher using Key.
+    """Returns the decrypted message.
+
+    The encoded message that is passed as argument gets
+    decrypted using the key provided.
 
     Args:
         message (str): The  message to be decrypted.
