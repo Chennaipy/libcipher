@@ -8,14 +8,16 @@ class EnglishChecker():
        English or not. Two filter methods accomplish this by ensuring:
         1. At least 85% of the message comprises of english alphabets
         2. At least 25% of the words in the sentence are contained in
-           the dictionary file, an exhaustive list of english words
+           the dictionary file that the user provides
     """
 
     def __init__(self, filename):
         self.filename = filename
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
-        content = filename.getvalue()
-        self.ENGLISH_WORDS = content.upper()
+        content = ''.join(filename.readlines())
+        content = set(content.upper().split())   
+        self.ENGLISH_WORDS = content
+        self.filename.close()
 
     def get_english_count(self, message):
         message = message.upper()
@@ -57,5 +59,4 @@ class EnglishChecker():
         num_letters = len(self.remove_non_letters(message))
         message_letters_percentage = float(num_letters) / len(message) * 100
         letters_match = message_letters_percentage >= letter_percentage
-        self.filename.close()
         return words_match and letters_match
