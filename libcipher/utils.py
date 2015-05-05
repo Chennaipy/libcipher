@@ -1,38 +1,22 @@
 import io
-import os
-import inspect
 import sys
 import string
 
-dictionary_file_path = os.path.dirname(__file__)
-fileobject = open(dictionary_file_path+'/dictionary.txt')
-
 
 class EnglishChecker():
-    """This class serves the purpose of checking if a statement is English or not.
-       Two filter methods accomplish this by ensuring:
+    """This class serves the purpose of checking if a statement is
+       English or not. Two filter methods accomplish this by ensuring:
         1. At least 85% of the message comprises of english alphabets
         2. At least 25% of the words in the sentence are contained in
            the dictionary file, an exhaustive list of english words
     """
 
-    def __init__(self, filename=fileobject):
+    def __init__(self, filename):
         self.filename = filename
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
-        if type(self.filename) == io.StringIO:
-            content = filename.getvalue()
-            self.ENGLISH_WORDS = content.upper()
+        content = filename.getvalue()
+        self.ENGLISH_WORDS = content.upper()
 
-        else:
-            self.filename = open(dictionary_file_path+'/dictionary.txt')
-            if sys.version < '3' :
-                content = io.StringIO(unicode(self.filename.read())).getvalue()
-            else:
-                content = io.StringIO(str(self.filename.read())).getvalue()
-            
-            self.english_words = {}
-            self.ENGLISH_WORDS = content.split('\n')
-            
     def get_english_count(self, message):
         message = message.upper()
         message = self.remove_non_letters(message)
