@@ -72,4 +72,3 @@ Before sending a pull request, please ensure the following:
 * The changelog has been updated, to indicate the change made along
   with the issue no. on GitHub. The changelog is to be in `releases
   format <http://releases.readthedocs.org/en/latest/index.html>`_.
-
