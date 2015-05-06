@@ -11,13 +11,13 @@ class EnglishChecker():
            the dictionary file that the user provides
     """
 
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, dict_file):
+        self.dict_file = dict_file
         self.LETTERS_AND_SPACE = string.ascii_letters + string.whitespace
-        content = ''.join(filename.readlines())
+        content = ''.join(dict_file.readlines())
         content = set(content.upper().split())   
         self.ENGLISH_WORDS = content
-        self.filename.close()
+        self.dict_file.close()
 
     def get_english_count(self, message):
         message = message.upper()
