@@ -3,11 +3,6 @@
 Provides functions to encrypt / decrypt a message by changing the
 character position of plain text.
 
-The Transposition decrypt function will simulate the columns and
-rows of the grid that the plain text is written on by using a list of
-strings. No of Columns is calculated by (length of the text)/key.
-key value is consider as no of rows.
-
 >>> decrypt(8, 'Cenoonommstmme oo snnio. s s c')
 'Common sense is not so common.'
 
@@ -15,16 +10,21 @@ key value is consider as no of rows.
 from __future__ import division
 import math
 
+# The Transposition decrypt function will simulate the columns and
+# rows of the grid that the plain text is written on by using a list of
+# strings. No of Columns is calculated by (length of the text)/key.
+# key value is consider as no of rows.
+
 
 def decrypt(key, message):
     """Returns message decrypted using Transposition Cipher
 
     Args:
-         key : Integer indicating Encryption key to decrypt message.
-         message : An encrypted string
+      key (int): Integer indicating Encryption key to decrypt message.
+      message (str): An encrypted string
 
     Returns:
-         A decrypted message
+      A decrypted message
     """
 
     num_of_columns = int(math.ceil(len(message) / key))
