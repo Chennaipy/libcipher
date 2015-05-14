@@ -1,5 +1,12 @@
-"""This module provides the functionality of Caesar Cipher
-encryption and decryption for the Libcipher project."""
+"""Caesar cipher implementation.
+
+Provides functions to encrypt / decrypt a message using Caesar Cipher.
+
+>>> encrypt("hello world", 5)
+'mjqqt btwqi'
+>>> decrypt('mjqqt btwqi', 5)
+'hello world'
+"""
 
 __author__ = 'kskrishnasangeeth'
 
