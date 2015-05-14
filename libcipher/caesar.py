@@ -43,7 +43,7 @@ def encrypt(message, key):
         str: the encrypted message.
     """
 
-    __check_exceptions(key)
+    __check_key(key)
     encrypt_text = __cipher_helper(message, key)
     return encrypt_text
 
@@ -62,12 +62,12 @@ def decrypt(message, key):
         str: the decrypted message.
     """
     
-    __check_exceptions(key)
+    __check_key(key)
     decrypt_text = __cipher_helper(message, -key)
     return decrypt_text
 
 
-def __check_exceptions(key):
+def __check_key(key):
     """Validate encryption / decryption key.
 
     Args:
