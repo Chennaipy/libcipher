@@ -61,7 +61,7 @@ def decrypt(message, key):
                    is performed.
 
     Returns:
-        str:  The message which was decrypted.
+        str: the decrypted message.
 
     """
     __check_exceptions(key)
