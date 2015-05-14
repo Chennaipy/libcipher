@@ -7,15 +7,14 @@ import string
 
 
 def __cipher_helper(message, key):
-    """Function where the encryption/decryption logic gets executed.
+    """Returns encrypted / decrypted text.
 
     Args:
-        message (str): Message that is supplied for encryption/decryption.
-        key (int): Key used for encryption/decryption.
+        message (str): the message to be encrypted / decrypted.
+        key (int): the encryption / decryption key.
 
     Returns:
-        message (str): Ciphered Message in lowercase.
-
+        message (str): the encrypted / decrypted message.
     """
 
     cipher_text = ""
@@ -37,13 +36,13 @@ def encrypt(message, key):
     encrypted using the key that is supplied.
 
     Args:
-        message (str): The message to be encrypted.
-        key (int): The key based on which encryption is performed.
+        message (str): the message to be encrypted.
+        key (int): the encryption key.
 
     Returns:
         str: the encrypted message.
-
     """
+
     __check_exceptions(key)
     encrypt_text = __cipher_helper(message, key)
     return encrypt_text
@@ -56,27 +55,24 @@ def decrypt(message, key):
     decrypted using the key provided.
 
     Args:
-        message (str): The  message to be decrypted.
-        key (int): The key based on which decryption
-                   is performed.
+        message (str): the message to be decrypted.
+        key (int): the decryption key.
 
     Returns:
         str: the decrypted message.
-
     """
+    
     __check_exceptions(key)
     decrypt_text = __cipher_helper(message, -key)
     return decrypt_text
 
 
 def __check_exceptions(key):
-    """Function to check and raise exception for
-       wrong key.
+    """Validate encryption / decryption key.
 
     Args:
-        key (str): The key for which exceptions are checked
-                    against.
-
+        key (str): the key to be validated
     """
+    
     if key <= 0 or key >= 27:
         raise ValueError("Key  should be between 0 and 26. Got Key as", key)
