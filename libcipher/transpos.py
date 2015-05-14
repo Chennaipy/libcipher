@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 """Transposition cipher implementation
 
 Provides functions to encrypt/decrypt a message by transpose ciphering it.
-Encryption needs a key(a number).
+
 """
 
 
@@ -10,7 +11,10 @@ class Error(Exception):
 
 
 class InvalidKeySizeException(Error):
-    '''Class created for throwing excption when invalid key size is given.
+    '''Invalid key size exception
+
+    When keysize is greater than half of size of message size,this
+    exception is thrown with description indicating keysize and message size.
 
     Attributes:
         keysize (int): Size of Key
@@ -32,61 +36,42 @@ class InvalidKeySizeException(Error):
             " and Message Size is " + repr(self.messagesize))
 
 
-class NoKeyGivenException(Error):
-    '''Class created for throwing exception when no key is given.
-    '''
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        return('Key is needed for encryption')
-
-
-class NoMessageGivenException(Error):
-    '''Class created for throwing exception no message is given
-    '''
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        return('Message is needed for encryption')
-
-
 def encrypt(keysize, message):
-    '''
+    '''Transpose Cipher Encrypt function.
+
     Args :
-        Transposition Cipher Key Size,Message
+        keysize(int): Keysize for transposition cipher encryption.
+        message(string):Message to be encrypted using transposition
+          cipher encryption.
     Returns:
-        message encrypted using transposition cipher.'|' is added at to
-        indicate end of message.For invalid key size,InvalidKeySizeException
-        is thrown.For empty input message,'|' is returned.
+        String : For valid message and keysize,encrypetd message with '|'
+          at end is returned.
+          When message is '','|' is alone returned as encrypted message.
+
+    Raises:
+        InvalidKeySizeException: When the keysize is greater than half
+        of the message size,this exception is raised.
     '''
-    if message is None:
-        raise NoMessageGivenException
-    else:
-        message_size = len(message)
+    message_size = len(message)
     # the transposition cipher key is limited to half the length of the
     # message it is used to encrypt
-    if keysize is None:
-        raise NoKeyGivenException
+    if keysize <= message_size//2:
+        encrypted_message = keysize * ['']
+        letter_index = 0
+        while letter_index < message_size:
+            column_index = 0
+            while column_index < keysize and letter_index < message_size:
+                encrypted_message[column_index] += message[letter_index]
+                letter_index += 1
+                column_index += 1
+        encrypted_message = ''.join(encrypted_message)+'|'
+        return encrypted_message
     else:
-        if keysize <= message_size//2:
-            encrypted_message = keysize * ['']
-            letter_index = 0
-            while letter_index < message_size:
-                column_index = 0
-                while column_index < keysize and letter_index < message_size:
-                    encrypted_message[column_index] += message[letter_index]
-                    letter_index += 1
-                    column_index += 1
-            encrypted_message = ''.join(encrypted_message)+'|'
+        if message_size == 0:
+            encrypted_message = '|'
             return encrypted_message
         else:
-            if message_size == 0:
-                encrypted_message = '|'
-                return encrypted_message
-            else:
-                # Raise an exception indicating invalid KeySize for
-                # non-empty message
-                raise InvalidKeySizeException(keysize, message_size)
-                return ''
+            # Raise an exception indicating invalid KeySize for
+            # non-empty message
+            raise InvalidKeySizeException(keysize, message_size)
+            return ''
