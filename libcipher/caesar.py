@@ -36,6 +36,17 @@ def __cipher_helper(message, key):
     return cipher_text
 
 
+def __check_key(key):
+    """Validate encryption / decryption key.
+
+    Args:
+        key (str): the key to be validated
+    """
+
+    if key <= 0 or key >= 27:
+        raise ValueError("Key  should be between 0 and 26. Got Key as", key)
+
+
 def encrypt(message, key):
     """Returns the encrypted message.
 
@@ -73,13 +84,3 @@ def decrypt(message, key):
     decrypt_text = __cipher_helper(message, -key)
     return decrypt_text
 
-
-def __check_key(key):
-    """Validate encryption / decryption key.
-
-    Args:
-        key (str): the key to be validated
-    """
-
-    if key <= 0 or key >= 27:
-        raise ValueError("Key  should be between 0 and 26. Got Key as", key)
