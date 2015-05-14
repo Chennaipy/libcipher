@@ -68,7 +68,7 @@ def decrypt(message, key):
     Returns:
         str: the decrypted message.
     """
-    
+
     __check_key(key)
     decrypt_text = __cipher_helper(message, -key)
     return decrypt_text
@@ -80,6 +80,6 @@ def __check_key(key):
     Args:
         key (str): the key to be validated
     """
-    
+
     if key <= 0 or key >= 27:
         raise ValueError("Key  should be between 0 and 26. Got Key as", key)
