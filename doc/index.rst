@@ -15,7 +15,7 @@ Contents
    
    reverse
    changelog
-
+   caesar
 
 Indices and tables
 ==================
