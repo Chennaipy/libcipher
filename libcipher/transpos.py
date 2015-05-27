@@ -26,12 +26,10 @@ def encrypt(key, message):
         raise ValueError('Key is limited to half the length of message')
     else:
         encrypted_message = [''] * key
-        letter_index = 0
-        while letter_index < message_size:
-            column_index = 0
-            while column_index < key and letter_index < message_size:
-                encrypted_message[column_index] += message[letter_index]
-                letter_index += 1
-                column_index += 1
+        for col in range(key):
+            pointer = col
+            while pointer < message_size:
+                encrypted_message[col] += message[pointer]
+                pointer += key
         encrypted_message = ''.join(encrypted_message)
         return encrypted_message
