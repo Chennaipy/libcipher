@@ -3,7 +3,6 @@
 
 import unittest
 from libcipher.transpos import encrypt
-from libcipher.transpos import InvalidKeySizeException
 
 
 class TransposEncryptTestCase(unittest.TestCase):
@@ -13,18 +12,17 @@ class TransposEncryptTestCase(unittest.TestCase):
         """ To test encryption when keysize is lesser than half of message size
         """
         encrypted = encrypt(3, 'Hello World')
-        self.assertEqual(encrypted, "HlWleoodl r|")
+        self.assertEqual(encrypted, "HlWleoodl r")
 
     def test_empty(self):
-        """To test encryption when an empty message('') is given as input
+        """To test raise of ValuError when an empty message('') is given as input
         """
-        encrypted = encrypt(3, '')
-        self.assertEqual(encrypted, "|")
+        self.assertRaises(ValueError, encrypt, 1, '')
 
     def test_keysizeGreaterThanHalfMessageSize(self):
-        """To test raise of an exception when keysze is invalid
+        """To test raise of ValueError exception when keysze is invalid
         """
-        self.assertRaises(InvalidKeySizeException, encrypt, 7, 'Hello World')
+        self.assertRaises(ValueError, encrypt, 7, 'Hello World')
 
 if __name__ == '__main__':
     unittest.main()
