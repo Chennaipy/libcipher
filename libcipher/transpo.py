@@ -24,7 +24,7 @@ def decrypt(key, message):
       message (str): An encrypted string
 
     Returns:
-      A decrypted message
+      str: A decrypted message
     """
 
     num_of_columns = int(math.ceil(len(message) / key))
@@ -40,9 +40,9 @@ def decrypt(key, message):
         plaintext[col] += symbol
         col += 1
 
-        if ((col == num_of_columns or
+        if (col == num_of_columns or
              col == num_of_columns - 1 and
-             row >= num_of_rows - num_of_shaded_boxes)):
+             row >= num_of_rows - num_of_shaded_boxes):
             col = 0
             row += 1
 
