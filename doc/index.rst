@@ -14,8 +14,8 @@ Contents
 .. toctree::
    
    reverse
+   caesar
    changelog
-
 
 Indices and tables
 ==================
