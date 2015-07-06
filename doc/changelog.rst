@@ -2,6 +2,7 @@ Changelog
 =========
 * :feature:`5` Add transposition cipher encryption.
 * :feature:`4` Add encryption and decryption for caesar cipher.
+* :feature:`7` Added utils module
 * :support:`8` Add contributing guidelines.
 * :feature:`6` Add transposition cipher decryption.
 * :support:`3` Add Travis build status, code coverage, and Read The
