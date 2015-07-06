@@ -6,9 +6,10 @@ import string
 class EnglishChecker():
     """This class serves the purpose of checking if a statement is
        English or not. Two filter methods accomplish this by ensuring:
-        1. At least 85% of the message comprises of english alphabets
-        2. At least 25% of the words in the sentence are contained in
-           the dictionary file that the user provides
+       
+       1. At least 85% of the message comprises of english alphabets
+       2. At least 25% of the words in the sentence are contained in
+          the dictionary file that the user provides
     """
 
     def __init__(self, dict_file):
@@ -37,8 +38,8 @@ class EnglishChecker():
         return ''.join(letters_only)
 
     def is_english(self, message, word_percentage=25, letter_percentage=85):
-        """Checks to see if given text is in English and
-           returns the result.
+        """Returns true if given text is in English, false otherwise.
+           
         Args:
           message (string): The text input
           word_percentage (int): Indicates the minium
@@ -47,10 +48,11 @@ class EnglishChecker():
           letter_percentage (int): Indicates the minium
             percentage of English alphabets in a word. The
             default value is 85
+            
         Returns:
           bool: True if message is in English, False otherwise.
-
         """
+
         if len(message) == 0:
             return False
         words_match = self.get_english_count(message) * 100 >= word_percentage
