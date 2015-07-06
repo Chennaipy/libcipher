@@ -16,7 +16,7 @@ import math
 def encrypt(key, message):
     '''Returns the encrypted message.
 
-    Args :
+    Args:
         key(int): the encryption key.
         message(string): message to be encrypted.
           
@@ -24,8 +24,7 @@ def encrypt(key, message):
         string: the encrypted message
         
     Raises:
-        ValueError: When the key is greater than half of the message
-        size,this exception is raised.
+        ValueError: When the key is greater than half of the message size
     '''
     message_size = len(message)
     # the transposition cipher key is limited to half the length of the
