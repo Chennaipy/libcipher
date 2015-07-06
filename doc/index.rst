@@ -16,6 +16,7 @@ Contents
    reverse
    caesar
    transpos
+   utils
    changelog
 
 Indices and tables
