@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
-"""Transposition cipher implementation
+"""Transposition cipher implementation.
 
 Provides functions to encrypt/decrypt a message by transpose ciphering it.
-
 """
 
 
 def encrypt(key, message):
-    '''Returns encrypted message.
+    '''Returns the encrypted message.
 
     Args :
         key(int): key for transposition cipher encryption.
         message(string):Message to be encrypted using transposition
           cipher encryption.
+          
     Returns:
-        String : Encrypted message
+        string: the encrypted message
+        
     Raises:
         ValueError: When the key is greater than half
         of the message size,this exception is raised.
