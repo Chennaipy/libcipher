@@ -1,17 +1,26 @@
-"""Unit tests for english language checker"""
-from libcipher import utils as utils
+"""Unit tests for english language checker."""
+
+from libcipher import utils
 import io
 import sys
 import unittest
 
+#
+# Based on http://python3porting.com/noconv.html
+#
+if sys.version_info < (3,):
+	import codecs
+	def u(x):
+		return codecs.unicode_escape_decode(x)[0]
+else:
+	def u(x):
+		return x
+
 
 def get_marys_dictionary():
-        english_words = ["had", "a", "little", "lamb"]
-        if sys.version < '3':
-            dict_file = io.StringIO(unicode('\n').join(english_words))
-        else:
-            dict_file = io.StringIO("\n".join(english_words))
-        return dict_file
+	english_words = ["had", "a", "little", "lamb"]
+	dict_file = io.StringIO(u('\n').join(english_words))
+	return dict_file
 
 
 class EnglishCheckTestCase(unittest.TestCase):
